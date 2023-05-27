@@ -1,0 +1,165 @@
+package AtividadeSomativa1;
+
+public class Lista {
+ 
+private No primeiro;
+
+public Lista() {
+	primeiro = null;
+	
+	}
+
+public boolean vazia() {
+	return primeiro == null;
+	
+	}
+
+public void inserir(int Dados) {
+    insereultimo(Dados);
+    }
+
+public void insereprimeiro(int Dados) {
+	No auxiliar = new No();
+	auxiliar.setdados(Dados);
+	auxiliar.setprox(primeiro);
+	primeiro = auxiliar;
+		
+	}
+
+public void inserePosicao(int Dados, int posicao) {
+    if (posicao < 0) {
+        System.out.println("Posição inválida. A posição deve ser um valor não negativo.");
+        return;
+    }
+
+    if (posicao == 0) {
+        insereprimeiro(Dados);
+        return;
+    }
+
+    No novoNo = new No();
+    novoNo.setdados(Dados);
+
+    No auxiliar = primeiro;
+    int contador = 0;
+
+    while (contador < posicao - 1 && auxiliar != null) {
+        auxiliar = auxiliar.getprox();
+        contador++;
+    }
+
+    if (auxiliar == null) {
+        System.out.println("Posição inválida. A posição excede o tamanho atual da lista.");
+        return;
+    }
+    
+    novoNo.setprox(auxiliar.getprox());
+    auxiliar.setprox(novoNo);   
+}
+
+public void insereultimo(int Dados) {
+	
+	if(vazia() == true) {
+		insereprimeiro(Dados);
+	}
+	else {
+		No auxiliar = primeiro;
+		
+		while(auxiliar != null && auxiliar.getprox() != null) {
+			auxiliar = auxiliar.getprox();
+		}
+		if(auxiliar.getprox() == null) {
+			No novo = new No();
+			novo.setdados(Dados);
+			auxiliar.setprox(novo);
+			
+		} 
+	}
+
+}
+
+public void mostrar() {
+	No auxiliar = primeiro;
+	
+	while(auxiliar != null) {
+		System.out.print(auxiliar.getdados()+ " , ");
+		auxiliar = auxiliar.getprox();
+		
+	}
+	
+}
+
+public void removerultimo() {
+    if (vazia()) {
+        System.out.println("A lista está vazia. Não há elementos para remover.");
+        return;
+    }
+
+    if (primeiro.getprox() == null) {
+        primeiro = null;
+        return;
+    }
+
+    No auxiliar = primeiro;
+    No novo = null;
+    while (auxiliar.getprox() != null) {
+        novo = auxiliar;
+        auxiliar = auxiliar.getprox();
+    }
+
+    novo.setprox(null);
+      
+    }
+
+public void removerPrimeiro() {
+    if (vazia()) {
+        System.out.println("A lista está vazia. Não há elementos para remover.");
+        return;
+    }
+
+    primeiro = primeiro.getprox();
+}
+
+public void removerItem(int valor) {
+    if (vazia()) {
+        System.out.println("A lista está vazia. Não há elementos para remover.");
+        return;
+    }
+
+    if (primeiro.getdados() == valor) {
+        primeiro = primeiro.getprox();
+        return;
+    }
+
+    No anterior = primeiro;
+    No atual = primeiro.getprox();
+
+    while (atual != null && atual.getdados() != valor) {
+        anterior = atual;
+        atual = atual.getprox();
+    }
+
+    if (atual == null) {
+        System.out.println("O valor " + valor + " não foi encontrado na lista.");
+        return;
+    }
+
+    anterior.setprox(atual.getprox());
+}
+
+public void limpar() {
+    primeiro = null;
+}
+
+public int tamanho() {
+    int count = 0;
+    No auxiliar = primeiro;
+
+    while (auxiliar != null) {
+        count++;
+        auxiliar = auxiliar.getprox();
+    }
+     return count;
+   
+   } 
+}
