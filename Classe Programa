@@ -1,0 +1,46 @@
+package AtividadeSomativa1;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		
+		Lista l = new Lista();
+				
+		System.out.println( " Lista da AS1 " );	
+		
+		l.inserir(579);
+		l.inserir(55);
+		l.inserir(390);
+		l.insereultimo(223);
+		l.insereprimeiro(11);
+		l.inserePosicao(44, 2);// lista inicia em zero então o 2 quer dizer item 3!!!!
+		
+		int tamanho = l.tamanho();
+		l.tamanho();
+		System.out.println("Tamanho : " + tamanho);
+		
+		l.mostrar();
+		System.out.println("lista cheia");
+		
+		l.removerItem(55);
+		
+		l.mostrar();
+		System.out.println("removendo item específico");
+		
+		l.removerultimo();
+ 
+		l.mostrar();
+		System.out.println("Último elemento removido");
+		
+		l.removerPrimeiro();
+		
+		l.mostrar();
+		System.out.println("primeiro elemento removido");
+		
+		l.limpar();
+		
+		l.mostrar();
+		System.out.println("lista limpa:");
+
+	}
+}
