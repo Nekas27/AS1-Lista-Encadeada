@@ -1,0 +1,30 @@
+package AtividadeSomativa1;
+
+public class No {
+
+    private Integer Dados;
+    private No Proximo;
+
+public No() {
+
+    Dados =  null;
+    Proximo = null;
+    }
+
+public void setdados(int Dados) {
+    this.Dados = Dados;
+    }
+
+public void setprox(No Proximo) {
+    this.Proximo = Proximo;
+    }
+
+public No getprox() {
+    return this.Proximo;
+    }
+
+public int getdados() {
+    return this.Dados;
+
+    }
+}
